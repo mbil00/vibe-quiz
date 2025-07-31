@@ -1,0 +1,87 @@
+---
+description: Check this for common patterns in this application.
+globs: 
+alwaysApply: false
+---
+# Common Patterns and Architecture
+
+## JavaScript Architecture Patterns
+
+### Configuration-Driven UI
+- Elements with `data-config` attributes automatically display configured text from **[config-loader.js](mdc:config-loader.js)**
+- Example: `<span data-config="ui.landing.topicSelection">Default Text</span>`
+
+### Screen-Based Navigation
+The main application (**[quiz.js](mdc:quiz.js)**) uses a screen-based architecture:
+- `#landing-screen` - Topic selection and file upload
+- `#quiz-setup-screen` - Quiz configuration
+- `#question-screen` - Question display and interaction
+- `#times-up-screen` - Timer expiration handling
+
+### Event-Driven Interactions
+- Button click handlers for navigation
+- File upload handlers for JSON topic loading
+- Timer events for question time limits
+
+## CSS Patterns
+
+### CSS Custom Properties (Variables)
+Themes use CSS custom properties for consistent theming:
+```css
+:root {
+  --primary-color: #your-color;
+  --background-color: #your-background;
+}
+```
+
+### Responsive Grid Layouts
+- `.landing-layout` for two-column layouts
+- `.quiz-wide-layout` for main content + sidebar
+- Responsive breakpoints for mobile adaptation
+
+### Component-Based Styling
+- `.btn-primary`, `.btn-secondary` for button variants
+- `.section-card` for content containers
+- `.tool-card` for builder tool links
+
+## Data Structures
+
+### Topic Format (JSON)
+```json
+{
+  "name": "Topic Name",
+  "questions": [
+    {
+      "question": "Question text",
+      "answers": ["A", "B", "C", "D"],
+      "correct": 0,
+      "media": { "image": "path/to/image.jpg" }
+    }
+  ]
+}
+```
+
+### Quiz Configuration
+Combines multiple topics with round assignments and branding information.
+
+## File Naming Conventions
+
+- **HTML Files**: Kebab-case (e.g., `topic-builder.html`)
+- **JavaScript Files**: Kebab-case matching HTML (e.g., `topic-builder.js`)
+- **CSS Files**: Kebab-case with purpose (e.g., `quiz-builder.css`)
+- **JSON Content**: Descriptive names in target language
+
+## Builder Tool Architecture
+
+Each builder follows the same pattern:
+1. **HTML**: Form-based interface with preview areas
+2. **JavaScript**: Form handling, validation, JSON generation
+3. **CSS**: Dedicated styling for the specific tool
+
+## Error Handling Patterns
+
+- User-friendly error messages from configuration
+- Validation feedback for form inputs
+- Graceful degradation for missing media files
+- File format validation for uploads
+

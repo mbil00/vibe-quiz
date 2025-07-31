@@ -1,0 +1,49 @@
+---
+description: Information about the applciation itself - it's flow and features
+globs: 
+alwaysApply: false
+---
+# Czech Quiz Application - Project Overview
+
+This is a comprehensive web-based quiz application written in Czech language called "Kvízový Mistr" (Quiz Master). The application allows users to create, manage, and play interactive quizzes with multimedia support.
+
+## Main Entry Points
+
+- **[index.html](mdc:index.html)** - Main quiz application interface with landing screen, quiz setup, and gameplay
+- **[quiz.js](mdc:quiz.js)** - Core quiz logic, state management, and gameplay functionality (42KB)
+- **[config-loader.js](mdc:config-loader.js)** - Configuration system with embedded settings for customization
+
+## Builder Tools
+
+The application includes several builder tools for content creation:
+
+- **[topic-builder.html](mdc:topic-builder.html)** + **[topic-builder.js](mdc:topic-builder.js)** - Tool for creating quiz topics with questions
+- **[quiz-builder.html](mdc:quiz-builder.html)** + **[quiz-builder.js](mdc:quiz-builder.js)** - Tool for combining topics into complete quizzes
+- **[prompt-generator.html](mdc:prompt-generator.html)** + **[prompt-generator.js](mdc:prompt-generator.js)** - AI prompt generator for quiz content
+- **[theme-designer.html](mdc:theme-designer.html)** + **[theme-designer.js](mdc:theme-designer.js)** - Visual theme customization tool
+
+## Styling and Themes
+
+- **[styles.css](mdc:styles.css)** - Main application styles (29KB, 1536 lines)
+- **[theme.css](mdc:theme.css)** - Base theme definitions
+- **[themes/](mdc:themes)** directory contains pre-built themes like `ocean-blue.css`, `default-dark.css`
+- Each builder tool has its own dedicated CSS file
+
+## Content Structure
+
+- **[topics/](mdc:topics)** - JSON files containing quiz questions organized by topic
+- **[quizzes/](mdc:quizzes)** - Complete quiz configurations combining multiple topics
+- **[images/](mdc:images)** and **[audio/](mdc:audio)** - Media assets for questions
+- **[timer.js](mdc:timer.js)** - Standalone timer functionality
+
+## Key Features
+
+- Multi-topic quiz system with configurable rounds
+- Multimedia support (images, audio)
+- Customizable themes and branding
+- Timer-based questions
+- Progress tracking and scoring
+- Responsive design
+- Works offline (no server required)
+- Configurable UI text and messages through embedded configuration
+

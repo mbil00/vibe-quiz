@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nastavení - Kvízový Mistr</title>
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/settings.css">
+</head>
+<body>
+    <div class="settings-container">
+        <header class="settings-header">
+            <h1 class="settings-title">⚙️ Nastavení Kvízu</h1>
+            <p class="settings-subtitle">Upravte konfiguraci aplikace podle svých potřeb</p>
+        </header>
+
+        <div class="settings-content">
+            <!-- Section Selector -->
+            <div class="section-selector">
+                <label for="sectionSelect">Vyberte sekci:</label>
+                <select id="sectionSelect">
+                    <option value="all">🔍 Zobrazit vše</option>
+                    <option value="app">📱 Aplikace</option>
+                    <option value="branding">🎨 Branding</option>
+                    <option value="ui">🖥️ Uživatelské rozhraní</option>
+                    <option value="messages">💬 Zprávy</option>
+                    <option value="builders">🔧 Nástroje</option>
+                    <option value="sample">📝 Vzorky</option>
+                </select>
+            </div>
+
+            <!-- Search Box -->
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 Hledat v nastavení...">
+            </div>
+
+            <!-- Configuration Form -->
+            <form id="configForm" class="config-form">
+                <div id="configFields" class="config-fields">
+                    <!-- Dynamic content will be inserted here -->
+                </div>
+            </form>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button type="button" id="saveBtn" class="btn btn-primary">
+                    💾 Uložit změny
+                </button>
+                <button type="button" id="resetBtn" class="btn btn-secondary">
+                    🔄 Obnovit originál
+                </button>
+                <button type="button" id="exportBtn" class="btn btn-success">
+                    📤 Exportovat config
+                </button>
+                <button type="button" id="importBtn" class="btn btn-info">
+                    📥 Importovat config
+                </button>
+                <button type="button" id="backBtn" class="btn btn-back">
+                    🔙 Zpět na kvíz
+                </button>
+            </div>
+
+            <!-- Import File Input (Hidden) -->
+            <input type="file" id="importFile" accept=".json" style="display: none;">
+        </div>
+
+        <!-- Preview Section -->
+        <div class="preview-section">
+            <h3>📋 Náhled konfigurace</h3>
+            <textarea id="configPreview" readonly></textarea>
+        </div>
+
+        <!-- Status Messages -->
+        <div id="statusMessage" class="status-message"></div>
+    </div>
+
+    <script src="../js/config-loader.js"></script>
+    <script src="../js/settings.js"></script>
+</body>
+</html> 

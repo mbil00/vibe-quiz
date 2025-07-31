@@ -1,0 +1,103 @@
+/* Theme Variables - Default Dark */
+/* Author: Quiz App */
+/* Description: Default dark theme with blue accent colors */
+:root {
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --success-color: #48bb78;
+    --danger-color: #f56565;
+    --warning-color: #ed8936;
+    --dark-bg: #1a202c;
+    --light-bg: #2d3748;
+    --text-primary: #ffffff;
+    --text-secondary: #a0aec0;
+    --border-color: #4a5568;
+    
+    /* Input and Form Variables */
+    --input-bg: rgba(0, 0, 0, 0.3);
+    --input-bg-focus: rgba(0, 0, 0, 0.4);
+    --dropdown-bg: #2d3748;
+    
+    /* Theme Metadata (for theme manager) */
+    --theme-name: "Default Dark";
+    --theme-author: "Quiz App";
+    --theme-version: "1.0.0";
+    --theme-description: "Default dark theme with blue accent colors";
+}
+
+/* Additional theme-specific styling that can be customized */
+body {
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--light-bg) 100%);
+}
+
+/* Branding header specific styling for better contrast */
+.branding-header {
+    background: var(--light-bg);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 2px 10px var(--border-color);
+}
+
+/* Optional: Theme-specific animation and gradient overrides */
+.main-title {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.topic-name,
+.round-title,
+.complete-title,
+.thank-you-title {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 4px 15px var(--border-color);
+}
+
+.btn-primary:hover:not(:disabled) {
+    box-shadow: 0 6px 20px var(--primary-color);
+}
+
+.upload-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 4px 15px var(--border-color);
+}
+
+.upload-btn:hover {
+    box-shadow: 0 6px 20px var(--primary-color);
+}
+
+/* Gradient for stats display */
+.stat-number {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.topic-number {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.question-number {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+/* Thank you screen gradient */
+.thank-you-title {
+    background: linear-gradient(135deg, var(--success-color), var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Tool card hover effects */
+.tool-card:hover {
+    box-shadow: 0 4px 20px var(--border-color);
+}

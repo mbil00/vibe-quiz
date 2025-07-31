@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kvízový Mistr - Interaktivní Vědomostní Výzva</title>
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Branding Header - persistent across all quiz screens -->
+        <div class="branding-header" id="branding-header">
+            <div class="branding-left">
+                <!-- Logo will be added here by JavaScript -->
+            </div>
+            <div class="branding-center">
+                <!-- Quiz name will be added here by JavaScript -->
+            </div>
+            <div class="branding-right">
+                <!-- Organizer info will be added here by JavaScript -->
+            </div>
+        </div>
+        
+        <!-- Landing Screen -->
+        <div id="landing-screen" class="screen active">
+            <div class="landing-container">
+                <h1 class="main-title">Kvízový Mistr</h1>
+                <p class="subtitle">Otestujte své znalosti napříč různými tématy</p>
+                
+                <!-- Two Column Layout -->
+                <div class="landing-layout">
+                    <!-- Left Column - Main Quiz Setup -->
+                    <div class="main-column">
+                        <div class="section-card">
+                            <h2 class="section-title">🎯 <span data-config="ui.landing.topicSelection">Vyberte témata</span></h2>
+                            
+                            <div id="topic-list" class="topic-list">
+                                <!-- Topics will be dynamically added here -->
+                            </div>
+                            
+                            <div class="file-upload">
+                                <label for="json-upload" class="upload-btn">
+                                    <span>📁</span> <span data-config="ui.landing.uploadButton">Nahrát JSON s tématy</span>
+                                </label>
+                                <input type="file" id="json-upload" accept=".json" multiple>
+                            </div>
+                            
+                            <div id="selected-topics" class="selected-topics">
+                                <!-- Selected topics will appear here -->
+                            </div>
+                            
+                            <button id="ready-btn" class="btn-primary" disabled data-config="ui.landing.readyButton">Připraveno</button>
+                        </div>
+                    </div>
+
+                    <!-- Right Column - Builder Tools -->
+                    <div class="tools-column">
+                        <div class="section-card">
+                            <h2 class="section-title">🔧 Nástroje pro tvorbu</h2>
+                            <div class="tools-grid">
+                                <a href="html/topic-builder.html" class="tool-card">
+                                    <div class="tool-icon">✏️</div>
+                                    <div class="tool-content">
+                                        <h3 class="tool-title" data-config="ui.landing.createTopicButton">Vytvořit nové téma</h3>
+                                        <p class="tool-description">Vytvořte vlastní kvízové téma s otázkami a odpověďmi</p>
+                                    </div>
+                                </a>
+                                
+                                <a href="html/quiz-builder.html" class="tool-card">
+                                    <div class="tool-icon">📚</div>
+                                    <div class="tool-content">
+                                        <h3 class="tool-title" data-config="ui.landing.buildQuizButton">Sestavit kvíz</h3>
+                                        <p class="tool-description">Zkombinujte více témat do kompletního kvízu</p>
+                                    </div>
+                                </a>
+                                
+                                <a href="html/prompt-generator.html" class="tool-card">
+                                    <div class="tool-icon">🔮</div>
+                                    <div class="tool-content">
+                                        <h3 class="tool-title">Generátor promptů</h3>
+                                        <p class="tool-description">Vytvořte prompt pro AI generování kvízových otázek</p>
+                                    </div>
+                                </a>
+                                
+                                <a href="html/settings.html" class="tool-card">
+                                    <div class="tool-icon">⚙️</div>
+                                    <div class="tool-content">
+                                        <h3 class="tool-title">Nastavení</h3>
+                                        <p class="tool-description">Upravte konfiguraci a personalizujte aplikaci</p>
+                                    </div>
+                                </a>
+                                
+                                <a href="html/theme-designer.html" class="tool-card">
+                                    <div class="tool-icon">🎨</div>
+                                    <div class="tool-content">
+                                        <h3 class="tool-title">Návrhář témat</h3>
+                                        <p class="tool-description">Přizpůsobte si vzhled a barvy aplikace</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Setup Screen -->
+        <div id="quiz-setup-screen" class="screen">
+            <div class="container">
+                <h1 class="setup-title" data-config="ui.quizSetup.title">Nastavení kvízu</h1>
+                <p class="setup-subtitle" data-config="ui.quizSetup.subtitle">Vyberte výchozí bod pro spuštění kvízu</p>
+                
+                <div class="setup-content">
+                    <div class="setup-card">
+                        <h3 class="setup-section-title">📍 Výchozí pozice</h3>
+                        
+                        <div class="selector-group">
+                            <div class="selector-item">
+                                <label for="topic-selector" class="selector-label" data-config="ui.quizSetup.topicLabel">Začít od tématu:</label>
+                                <select id="topic-selector" class="selector-dropdown">
+                                    <!-- Topics will be populated here -->
+                                </select>
+                            </div>
+                            
+                            <div class="selector-item">
+                                <label for="question-selector" class="selector-label" data-config="ui.quizSetup.questionLabel">Začít od otázky:</label>
+                                <select id="question-selector" class="selector-dropdown">
+                                    <!-- Questions will be populated here -->
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="timer-config">
+                            <label for="setup-timer-duration" class="timer-label" data-config="ui.quizSetup.timerLabel">Čas na otázku (sekundy):</label>
+                            <input type="number" id="setup-timer-duration" min="10" max="300" value="90" class="timer-input">
+                        </div>
+                    </div>
+                    
+                    <div class="setup-actions">
+                        <button id="back-to-landing-btn" class="btn-secondary" data-config="ui.quizSetup.backButton">Zpět</button>
+                        <button id="start-quiz-btn" class="btn-primary" data-config="ui.quizSetup.startButton">Začít kvíz</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen">
+            <div class="container">
+                <h1 id="round-title" class="round-title">První Kolo</h1>
+                <button id="start-btn" class="btn-primary btn-large" data-config="ui.quiz.startButton">Začít</button>
+            </div>
+        </div>
+
+        <!-- Round Indicator Screen -->
+        <div id="round-indicator-screen" class="screen">
+            <div class="container">
+                <h1 id="next-round-title" class="round-title"></h1>
+                <button id="start-round-btn" class="btn-primary btn-large" data-config="ui.quiz.continueButton">Pokračovat</button>
+            </div>
+        </div>
+
+        <!-- Topic Intro Screen -->
+        <div id="topic-intro-screen" class="screen">
+            <div class="container">
+                <h1 id="topic-name" class="topic-name"></h1>
+                <p class="topic-info" data-config="ui.quiz.topicInfo">Připravte se na 5 otázek!</p>
+                <button id="start-topic-btn" class="btn-primary" data-config="ui.quiz.startTopicButton">Začít téma</button>
+            </div>
+        </div>
+
+        <!-- Question Screen -->
+        <div id="question-screen" class="screen">
+            <div class="container">
+                <div class="quiz-wide-layout">
+                    <div class="quiz-main-content">
+                        <div class="question-container">
+                            <h2 id="question-text" class="question-text"></h2>
+                            <!-- Media elements and buttons will be dynamically added here -->
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-sidebar">
+                        <div class="quiz-info-card">
+                            <h3>Aktuální stav</h3>
+                            <div class="progress-info">
+                                <span id="current-topic" class="current-topic"></span>
+                                <span id="question-progress" class="question-progress"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="quiz-timer-card">
+                            <div id="timer" class="timer">
+                                <svg class="timer-svg" viewBox="0 0 100 100">
+                                    <circle class="timer-circle-bg" cx="50" cy="50" r="45"></circle>
+                                    <circle id="timer-circle" class="timer-circle" cx="50" cy="50" r="45"></circle>
+                                </svg>
+                                <span id="timer-text" class="timer-text">1:30</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Time's Up Screen -->
+        <div id="times-up-screen" class="screen">
+            <div class="container">
+                <h2 class="times-up-title" data-config="ui.screens.timesUp.title">Čas vypršel!</h2>
+                <p class="times-up-message" data-config="ui.screens.timesUp.message">Čas na tuto otázku vypršel.</p>
+                <button id="next-from-timeout-btn" class="btn-primary" data-config="ui.quiz.nextQuestionButton">Další otázka</button>
+            </div>
+        </div>
+
+        <!-- Topic Finish Screen -->
+        <div id="topic-finish-screen" class="screen">
+            <div class="container">
+                <h2 class="finish-title" data-config="ui.screens.topicFinish.title">Téma dokončeno!</h2>
+                <p class="finish-message" data-config="ui.screens.topicFinish.message">Dokončili jste všech 5 otázek v tomto tématu.</p>
+                <button id="continue-btn" class="btn-primary" data-config="ui.quiz.continueButton">Pokračovat</button>
+            </div>
+        </div>
+
+        <!-- Answers Intro Screen -->
+        <div id="answers-intro-screen" class="screen">
+            <div class="container">
+                <h2 class="topic-label" data-config="ui.screens.answersIntro.label">Odpovědi k tématu</h2>
+                <h1 id="answers-topic-name" class="topic-name"></h1>
+                <p class="topic-info" data-config="ui.screens.answersIntro.info">Zde jsou správné odpovědi</p>
+                <button id="show-answers-btn" class="btn-primary" data-config="ui.quiz.showAnswersButton">Zobrazit odpovědi</button>
+            </div>
+        </div>
+
+        <!-- Answer Display Screen -->
+        <div id="answer-display-screen" class="screen">
+            <div class="container">
+                <div class="quiz-wide-layout">
+                    <div class="quiz-main-content">
+                        <div class="answer-display-content">
+                            <div class="question-recap">
+                                <h3 data-config="ui.screens.answerDisplay.questionLabel">Otázka:</h3>
+                                <p id="recap-question" class="recap-question"></p>
+                            </div>
+                            
+                            <div class="answer-section">
+                                <h3 data-config="ui.screens.answerDisplay.answerLabel">Správná odpověď:</h3>
+                                <p id="answer-text" class="answer-text"></p>
+                            </div>
+                            
+                            <div class="explanation-section">
+                                <h3 data-config="ui.screens.answerDisplay.explanationLabel">Vysvětlení:</h3>
+                                <p id="explanation-text" class="explanation-text"></p>
+                            </div>
+                        </div>
+                        
+                        <button id="next-answer-btn" class="btn-primary" data-config="ui.quiz.nextAnswerButton">Další odpověď</button>
+                    </div>
+                    
+                    <div class="quiz-sidebar">
+                        <div class="quiz-info-card">
+                            <h3>Průběh odpovědí</h3>
+                            <div class="progress-info">
+                                <span id="answer-topic" class="current-topic"></span>
+                                <span id="answer-progress" class="question-progress"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Complete Screen -->
+        <div id="complete-screen" class="screen">
+            <div class="container complete-screen-container">
+                <div class="completion-animation">
+                    <div class="trophy" data-config="ui.screens.complete.trophy">🏆</div>
+                </div>
+                <div class="organizer-info" id="organizer-info"></div>
+                <h1 class="complete-title" data-config="ui.screens.complete.title">Kvíz dokončen!</h1>
+                <p class="complete-message" data-config="ui.screens.complete.message">Gratulujeme k dokončení všech témat!</p>
+                
+                <button id="continue-to-thanks-btn" class="btn-primary" data-config="ui.screens.complete.continueButton">Pokračovat</button>
+            </div>
+        </div>
+
+        <!-- Thank You Screen -->
+        <div id="thank-you-screen" class="screen">
+            <div class="container thank-you-container">
+                <div class="thank-you-animation">
+                    <div class="thank-you-icon">✨</div>
+                </div>
+                <div class="organizer-info" id="thank-you-organizer-info"></div>
+                <h1 class="thank-you-title" data-config="ui.screens.thankYou.title">Děkujeme za účast!</h1>
+                <p class="thank-you-message" data-config="ui.screens.thankYou.message">Děkujeme všem účastníkům za účast v kvízu. Doufáme, že jste si to užili!</p>
+                <p class="thank-you-subtitle" data-config="ui.screens.thankYou.subtitle">Kvíz můžete nyní zavřít.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config-loader.js"></script>
+    <script src="js/timer.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+</html>

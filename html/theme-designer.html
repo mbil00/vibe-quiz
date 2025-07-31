@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Návrhář Témat - Kvízový Mistr</title>
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/theme-designer.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Main Theme Designer Interface -->
+        <div class="theme-designer-container">
+            <!-- Header -->
+            <div class="designer-header">
+                <h1 class="designer-title">🎨 Návrhář Témat</h1>
+                <p class="designer-subtitle">Přizpůsobte si vzhled kvízové aplikace</p>
+                
+                <!-- Theme Actions -->
+                <div class="theme-actions">
+                    <button id="reset-theme" class="btn-secondary">↺ Obnovit výchozí</button>
+                    <button id="save-theme" class="btn-primary">💾 Uložit téma</button>
+                    <label for="load-theme" class="btn-secondary">📁 Načíst téma</label>
+                    <input type="file" id="load-theme" accept=".css" style="display: none;">
+                    <a href="../index.html" class="btn-back">← Zpět na kvíz</a>
+                </div>
+            </div>
+
+            <!-- Main Designer Layout -->
+            <div class="designer-layout">
+                <!-- Controls Panel -->
+                <div class="controls-panel">
+                    <div class="control-section">
+                        <h3 class="section-title">📝 Informace o tématu</h3>
+                        <div class="form-group">
+                            <label class="form-label">Název tématu:</label>
+                            <input type="text" id="theme-name" class="form-input" placeholder="Můj vlastní vzhled">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Autor:</label>
+                            <input type="text" id="theme-author" class="form-input" placeholder="Vaše jméno">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Popis:</label>
+                            <textarea id="theme-description" class="form-textarea" placeholder="Stručný popis tématu..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="control-section">
+                        <h3 class="section-title">🎨 Hlavní barvy</h3>
+                        <div class="color-grid">
+                            <div class="color-group">
+                                <label class="color-label">Primární barva:</label>
+                                <div class="color-input-group">
+                                    <input type="color" id="primary-color" class="color-picker">
+                                    <input type="text" id="primary-color-text" class="color-text" placeholder="#667eea">
+                                </div>
+                            </div>
+                            <div class="color-group">
+                                <label class="color-label">Sekundární barva:</label>
+                                <div class="color-input-group">
+                                    <input type="color" id="secondary-color" class="color-picker">
+                                    <input type="text" id="secondary-color-text" class="color-text" placeholder="#764ba2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-section">
+                        <h3 class="section-title">🎯 Stavové barvy</h3>
+                        <div class="color-grid">
+                            <div class="color-group">
+                                <label class="color-label">Úspěch:</label>
+                                <div class="color-input-group">
+                                    <input type="color" id="success-color" class="color-picker">
+                                    <input type="text" id="success-color-text" class="color-text" placeholder="#48bb78">
+                                </div>
+                            </div>
+                            <div class="color-group">
+                                <label class="color-label">Nebezpečí:</label>
+                                <div class="color-input-group">
+                                    <input type="color" id="danger-color" class="color-picker">
+                                    <input type="text" id="danger-color-text" class="color-text" placeholder="#f56565">
+                                </div>
+                            </div>
+                            <div class="color-group">
+                                <label class="color-label">Varování:</label>
+                                <div class="color-input-group">
+                                    <input type="color" id="warning-color" class="color-picker">
+                                    <input type="text" id="warning-color-text" class="color-text" placeholder="#ed8936">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-section">
+                        <h3 class="section-title">🌗 Pozadí a texty</h3>
+                        <div class="color-grid">
+                            <div class="color-group">
+                                <label class="color-label">Tmavé pozadí:</label>
+                                <div class="color-input-group">
+                                    <input type="color" id="dark-bg" class="color-picker">
+                                    <input type="text" id="dark-bg-text" class="color-text" placeholder="#1a202c">
+                                </div>
+                            </div>
+                            <div class="color-group">
+                                <label class="color-label">Světlé pozadí:</label>
+                                <div class="color-input-group">
+                                    <input type="color" id="light-bg" class="color-picker">
+                                    <input type="text" id="light-bg-text" class="color-text" placeholder="#2d3748">
+                                </div>
+                            </div>
+                            <div class="color-group">
+                                <label class="color-label">Hlavní text:</label>
+                                <div class="color-input-group">
+                                    <input type="color" id="text-primary" class="color-picker">
+                                    <input type="text" id="text-primary-text" class="color-text" placeholder="#ffffff">
+                                </div>
+                            </div>
+                            <div class="color-group">
+                                <label class="color-label">Vedlejší text:</label>
+                                <div class="color-input-group">
+                                    <input type="color" id="text-secondary" class="color-picker">
+                                    <input type="text" id="text-secondary-text" class="color-text" placeholder="#a0aec0">
+                                </div>
+                            </div>
+                            <div class="color-group">
+                                <label class="color-label">Ohraničení:</label>
+                                <div class="color-input-group">
+                                    <input type="color" id="border-color" class="color-picker">
+                                    <input type="text" id="border-color-text" class="color-text" placeholder="#4a5568">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-section">
+                        <h3 class="section-title">📝 Formuláře a vstupy</h3>
+                        <div class="color-grid">
+                            <div class="color-group">
+                                <label class="color-label">Pozadí vstupů:</label>
+                                <div class="color-input-group">
+                                    <input type="color" id="input-bg" class="color-picker" value="#000000">
+                                    <input type="text" id="input-bg-text" class="color-text" placeholder="rgba(0, 0, 0, 0.3)">
+                                </div>
+                            </div>
+                            <div class="color-group">
+                                <label class="color-label">Pozadí vstupů (focus):</label>
+                                <div class="color-input-group">
+                                    <input type="color" id="input-bg-focus" class="color-picker" value="#000000">
+                                    <input type="text" id="input-bg-focus-text" class="color-text" placeholder="rgba(0, 0, 0, 0.4)">
+                                </div>
+                            </div>
+                            <div class="color-group">
+                                <label class="color-label">Pozadí rozbalovacích menu:</label>
+                                <div class="color-input-group">
+                                    <input type="color" id="dropdown-bg" class="color-picker">
+                                    <input type="text" id="dropdown-bg-text" class="color-text" placeholder="#2d3748">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-section">
+                        <h3 class="section-title">⚙️ Předvolby</h3>
+                        <div class="preset-buttons">
+                            <button class="preset-btn" data-preset="default">🌙 Výchozí tmavé</button>
+                            <button class="preset-btn" data-preset="light">☀️ Světlé</button>
+                            <button class="preset-btn" data-preset="ocean">🌊 Oceán</button>
+                            <button class="preset-btn" data-preset="forest">🌲 Les</button>
+                            <button class="preset-btn" data-preset="sunset">🌅 Západ slunce</button>
+                            <button class="preset-btn" data-preset="midnight">🌌 Půlnoc</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preview Panel -->
+                <div class="preview-panel">
+                    <h3 class="section-title">👀 Náhled</h3>
+                    
+                    <!-- Mini Quiz Preview -->
+                    <div class="preview-container">
+                        <div class="mini-quiz">
+                            <h1 class="main-title">Kvízový Mistr</h1>
+                            <div class="topic-selection">
+                                <h2>Vyberte témata</h2>
+                                <div class="topic-chip">Ukázkové téma</div>
+                                <div class="timer-config">
+                                    <label>Čas na otázku (sekundy):</label>
+                                    <input type="number" value="90" class="timer-input">
+                                </div>
+                                <div class="preview-form-controls">
+                                    <label>Sekce nastavení:</label>
+                                    <select class="selector-dropdown">
+                                        <option>🔍 Zobrazit vše</option>
+                                        <option>📱 Aplikace</option>
+                                        <option>🎨 Branding</option>
+                                        <option>🖥️ Uživatelské rozhraní</option>
+                                    </select>
+                                    <input type="text" placeholder="🔍 Hledat v nastavení..." class="search-input">
+                                </div>
+                                <button class="btn-primary">Připraveno</button>
+                            </div>
+                        </div>
+
+                        <div class="mini-quiz-question">
+                            <div class="quiz-info-card">
+                                <h3>Aktuální stav</h3>
+                                <div class="progress-info">
+                                    <span class="current-topic">Ukázkové téma</span>
+                                    <span class="question-progress">Otázka 1 z 5</span>
+                                </div>
+                            </div>
+                            
+                            <div class="question-container">
+                                <h2 class="question-text">Jaká je hlavní barva tohoto tématu?</h2>
+                                <button class="skip-next-btn">Přeskočit otázku</button>
+                            </div>
+                        </div>
+
+                        <div class="mini-buttons-demo">
+                            <button class="btn-primary">Primární tlačítko</button>
+                            <button class="btn-secondary">Sekundární tlačítko</button>
+                            <button class="btn-danger">Tlačítko pro mazání</button>
+                            <div class="upload-btn">Nahrávací tlačítko</div>
+                        </div>
+                    </div>
+
+                    <!-- Live CSS Output -->
+                    <div class="css-output-section">
+                        <h4 class="section-title">📄 Generovaný CSS</h4>
+                        <div class="css-output">
+                            <pre id="css-preview">/* Generovaný kód se zobrazí zde */</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/theme-designer.js"></script>
+</body>
+</html> 

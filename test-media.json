@@ -1,0 +1,44 @@
+{
+  "theme": "Test Media Questions",
+  "questions": [
+    {
+      "question": "Standard question without any media?",
+      "answer": "Standard answer",
+      "explanation": "This is a regular question without any media attachments",
+      "source": "Test Source",
+      "difficulty": "střední"
+    },
+    {
+      "question": "What do you see in this image?",
+      "answer": "A placeholder image with blue background",
+      "explanation": "This demonstrates how images are displayed in quiz questions",
+      "source": "Test Source",
+      "difficulty": "střední",
+      "image": "https://via.placeholder.com/400x300/4f46e5/ffffff?text=Sample+Image"
+    },
+    {
+      "question": "What do you hear in this audio clip?",
+      "answer": "Cantina Band music",
+      "explanation": "This demonstrates how audio files are handled in quiz questions. Note that the timer doesn't run for audio questions.",
+      "source": "Test Source", 
+      "difficulty": "střední",
+      "audio": "https://www2.cs.uic.edu/~i101/SoundFiles/CantinaBand3.wav"
+    },
+    {
+      "question": "Question with both image and audio?",
+      "answer": "Both media types together",
+      "explanation": "This shows how a question can have both image and audio elements",
+      "source": "Test Source",
+      "difficulty": "střední",
+      "image": "https://via.placeholder.com/300x200/ff6b6b/ffffff?text=Image+%2B+Audio",
+      "audio": "https://www2.cs.uic.edu/~i101/SoundFiles/CantinaBand3.wav"
+    },
+    {
+      "question": "Final regular question?",
+      "answer": "Final answer",
+      "explanation": "Back to a standard question format",
+      "source": "Test Source",
+      "difficulty": "střední"
+    }
+  ]
+}

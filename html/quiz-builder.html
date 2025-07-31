@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stavitel Kvízů - Kvízový Mistr</title>
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/quiz-builder.css">
+</head>
+<body>
+    <div id="app">
+        <div class="screen active">
+            <div class="quiz-builder-container">
+                <h1 class="main-title" data-config="builders.quizBuilder.title">Stavitel Kvízů</h1>
+                <p class="subtitle" data-config="builders.quizBuilder.subtitle">Vytvořte kompletní kvíz s více tématy</p>
+                
+                <div class="builder-container">
+                    <!-- Quiz Info Section -->
+                    <div class="section-card full-width">
+                        <h2 class="section-title">📋 <span data-config="builders.quizBuilder.sections.quizInfo">Informace o kvízu</span></h2>
+                        <div class="quiz-info-grid">
+                            <div class="form-group">
+                                <label class="form-label" data-config="builders.quizBuilder.labels.quizName">Název kvízu:</label>
+                                <input type="text" id="quiz-name" class="form-input" placeholder="Zadejte název kvízu...">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" data-config="builders.quizBuilder.labels.description">Popis:</label>
+                                <textarea id="quiz-description" class="form-textarea" placeholder="Krátký popis kvízu..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Two Column Layout -->
+                    <div class="two-column-layout">
+                        <!-- Left Column - Topics -->
+                        <div class="left-column">
+                            <div class="section-card">
+                                <div class="section-header">
+                                    <h2 class="section-title">📂 <span data-config="builders.quizBuilder.sections.topics">Témata kvízu</span></h2>
+                                    <div class="header-actions">
+                                        <button id="load-topics-btn" class="btn-secondary">📁 <span data-config="builders.quizBuilder.buttons.loadTopics">Načíst témata</span></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="topics-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-number" id="topics-count">0</span>
+                                        <span class="stat-label" data-config="builders.quizBuilder.labels.topicsCount">témat</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number" id="questions-count">0</span>
+                                        <span class="stat-label" data-config="builders.quizBuilder.labels.questionsCount">otázek celkem</span>
+                                    </div>
+                                </div>
+
+                                <div id="topics-container" class="topics-container">
+                                    <!-- Topics will be dynamically added here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column - Actions & Preview -->
+                        <div class="right-column">
+                            <!-- Action Buttons -->
+                            <div class="section-card">
+                                <h2 class="section-title">🔧 <span data-config="builders.quizBuilder.sections.actions">Akce</span></h2>
+                                <div class="action-buttons-grid">
+                                    <button id="download-quiz-btn" class="btn-primary" disabled>📥 <span data-config="builders.quizBuilder.buttons.downloadQuiz">Stáhnout kvíz</span></button>
+                                    <button id="load-quiz-btn" class="btn-secondary">📂 <span data-config="builders.quizBuilder.buttons.loadQuiz">Načíst kvíz</span></button>
+                                    <button id="clear-quiz-btn" class="btn-danger">🗑️ <span data-config="builders.quizBuilder.buttons.clearQuiz">Vymazat vše</span></button>
+                                    <a href="topic-builder.html" class="btn-back">✏️ <span data-config="builders.quizBuilder.buttons.createTopic">Vytvořit téma</span></a>
+                                    <a href="../index.html" class="btn-back">← <span data-config="builders.quizBuilder.buttons.backToQuiz">Zpět na kvíz</span></a>
+                                </div>
+                            </div>
+
+                            <!-- Preview Section -->
+                            <div class="section-card">
+                                <h2 class="section-title">👁️ <span data-config="builders.quizBuilder.sections.preview">Náhled JSON kvízu</span></h2>
+                                <div class="preview-container">
+                                    <pre id="json-preview" class="json-preview"></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden file inputs -->
+    <input type="file" id="topics-file-input" accept=".json" multiple style="display: none;">
+    <input type="file" id="quiz-file-input" accept=".json" style="display: none;">
+
+    <!-- Drag indicator -->
+    <div id="drag-indicator" class="drag-indicator">
+        <div class="drag-line"></div>
+    </div>
+
+    <script src="../js/config-loader.js"></script>
+    <script src="../js/quiz-builder.js"></script>
+</body>
+</html> 

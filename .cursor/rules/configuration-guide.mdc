@@ -1,0 +1,48 @@
+---
+description: Check this for information about how configuration is handled and structured.
+globs: 
+alwaysApply: false
+---
+# Configuration System Guide
+
+The quiz application uses an embedded configuration system that allows customization without requiring a server.
+
+## Configuration File
+
+**[config-loader.js](mdc:config-loader.js)** contains the `EMBEDDED_CONFIG` object that controls:
+
+- App branding (name, subtitle, organizer)
+- UI text labels and buttons
+- Round names and titles
+- System messages (success, error, validation)
+- Builder tool configurations
+
+## Key Configuration Sections
+
+### App Branding
+```javascript
+"app": {
+  "name": "Mega Kvíz",
+  "subtitle": "Otestujte své znalosti napříč různými tématy", 
+  "title": "Mega Kvíz - Otestujte své znalosti",
+  "organizer": "Martin Bil"
+}
+```
+
+### UI Text Customization
+All button labels, messages, and interface text can be customized through the `ui` section.
+
+### Round Names
+Customize quiz round names in `ui.rounds` array with fallback in `ui.roundFallback`.
+
+## HTML Integration
+
+Elements with `data-config` attributes automatically display configured text:
+```html
+<span data-config="ui.landing.topicSelection">Vyberte témata</span>
+```
+
+## Documentation
+
+Full configuration guide available in **[CONFIG_README.md](mdc:CONFIG_README.md)** with examples for school and corporate customization.
+

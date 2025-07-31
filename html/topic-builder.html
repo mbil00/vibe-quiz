@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tvořič Témat - Kvízový Mistr</title>
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/topic-builder.css">
+</head>
+<body>
+    <div id="app">
+        <div class="screen active">
+            <div class="topic-builder-container">
+                <h1 class="main-title" data-config="builders.topicBuilder.title">Tvořič Témat</h1>
+                <p class="subtitle" data-config="builders.topicBuilder.subtitle">Vytvořte vlastní kvízové téma s otázkami</p>
+                
+                <div class="builder-container">
+                    <!-- Theme Name Section -->
+                    <div class="section-card full-width">
+                        <h2 class="section-title">📝 <span data-config="builders.topicBuilder.sections.themeName">Název tématu</span></h2>
+                        <input type="text" id="theme-name" class="theme-input" placeholder="Zadejte název tématu...">
+                    </div>
+
+                    <!-- Two Column Layout -->
+                    <div class="two-column-layout">
+                        <!-- Left Column - Questions -->
+                        <div class="left-column">
+                            <div class="section-card">
+                                <div class="section-header">
+                                    <h2 class="section-title">❓ <span data-config="builders.topicBuilder.sections.questions">Otázky</span></h2>
+                                    <div class="header-actions">
+                                        <button id="add-question-btn" class="btn-secondary" data-config="builders.topicBuilder.buttons.addQuestion">+ Přidat otázku</button>
+                                    </div>
+                                </div>
+                                
+                                <div id="questions-container" class="questions-container">
+                                    <!-- Questions will be dynamically added here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column - Actions & Preview -->
+                        <div class="right-column">
+                            <!-- Action Buttons -->
+                            <div class="section-card">
+                                <h2 class="section-title">🔧 <span data-config="builders.topicBuilder.sections.actions">Akce</span></h2>
+                                <div class="action-buttons-grid">
+                                    <button id="download-btn" class="btn-primary" disabled>📥 <span data-config="builders.topicBuilder.buttons.download">Stáhnout JSON</span></button>
+                                    <button id="load-btn" class="btn-secondary">📂 <span data-config="builders.topicBuilder.buttons.load">Načíst existující</span></button>
+                                    <button id="load-clipboard-btn" class="btn-secondary">📋 <span data-config="builders.topicBuilder.buttons.loadClipboard">Načíst ze schránky</span></button>
+                                    <button id="clear-btn" class="btn-danger">🗑️ <span data-config="builders.topicBuilder.buttons.clear">Vymazat vše</span></button>
+                                    <a href="quiz-builder.html" class="btn-back">📚 <span data-config="builders.topicBuilder.buttons.buildQuiz">Sestavit kvíz</span></a>
+                                    <a href="../index.html" class="btn-back">← <span data-config="builders.topicBuilder.buttons.backToQuiz">Zpět na kvíz</span></a>
+                                </div>
+                            </div>
+
+                            <!-- Preview Section -->
+                            <div class="section-card">
+                                <h2 class="section-title">👁️ <span data-config="builders.topicBuilder.sections.preview">Náhled JSON</span></h2>
+                                <div class="preview-container">
+                                    <pre id="json-preview" class="json-preview"></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden file input for loading JSON -->
+    <input type="file" id="json-file-input" accept=".json" style="display: none;">
+
+    <script src="../js/config-loader.js"></script>
+    <script src="../js/topic-builder.js"></script>
+</body>
+</html> 

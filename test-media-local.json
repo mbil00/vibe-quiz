@@ -1,0 +1,44 @@
+{
+  "theme": "Test Local Media Files",
+  "questions": [
+    {
+      "question": "Standard question without any media?",
+      "answer": "Standard answer",
+      "explanation": "This is a regular question without any media attachments",
+      "source": "Test Source",
+      "difficulty": "střední"
+    },
+    {
+      "question": "What do you see in this local image?",
+      "answer": "A badyan image",
+      "explanation": "This demonstrates how local images are displayed in quiz questions",
+      "source": "Test Source",
+      "difficulty": "střední",
+      "image": "./images/badyan.jpg"
+    },
+    {
+      "question": "What do you hear in this local audio clip?",
+      "answer": "MP3 audio file",
+      "explanation": "This demonstrates how local audio files are handled in quiz questions. Note that the timer doesn't run for audio questions.",
+      "source": "Test Source",
+      "difficulty": "střední",
+      "audio": "./audio/file_example_MP3_1MG.mp3"
+    },
+    {
+      "question": "Question with both local image and audio?",
+      "answer": "Both local media types together",
+      "explanation": "This shows how a question can have both local image and audio elements",
+      "source": "Test Source",
+      "difficulty": "střední",
+      "image": "./images/badyan.jpg",
+      "audio": "./audio/file_example_MP3_1MG.mp3"
+    },
+    {
+      "question": "Final regular question?",
+      "answer": "Final answer",
+      "explanation": "Back to a standard question format",
+      "source": "Test Source",
+      "difficulty": "střední"
+    }
+  ]
+} 

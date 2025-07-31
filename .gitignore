@@ -1,0 +1,39 @@
+# Quiz Application .gitignore
+# This configuration keeps folder structure while excluding content for GitHub
+
+# Content folders - keep structure, exclude files
+themes/*
+!themes/.gitkeep
+
+topics/*
+!topics/.gitkeep
+
+audio/*
+!audio/.gitkeep
+
+images/*
+!images/.gitkeep
+
+quizzes/*
+!quizzes/.gitkeep
+
+# Common development files
+.DS_Store
+.vscode/
+*.log
+*.tmp
+.idea/
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Temporary files
+*.swp
+*.swo

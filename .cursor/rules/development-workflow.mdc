@@ -1,0 +1,68 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Development Workflow and Best Practices
+
+## File Organization
+
+### Core Application Files
+- **[index.html](mdc:index.html)** - Main quiz interface (entry point)
+- **[quiz.js](mdc:quiz.js)** - Core quiz logic (42KB, main functionality)
+- **[config-loader.js](mdc:config-loader.js)** - Configuration management
+- **[timer.js](mdc:timer.js)** - Timer functionality
+
+### Builder Tools (Separate Applications)
+Each builder tool is a standalone application:
+- HTML file (UI structure)
+- JavaScript file (logic)
+- CSS file (styling)
+
+### Development Guidelines
+
+1. **No Server Required**: Application works with `file://` protocol
+2. **Configuration First**: Use **[config-loader.js](mdc:config-loader.js)** for text/branding changes
+3. **Modular Approach**: Each tool is self-contained
+4. **Czech Language**: Primary language for UI and content
+
+## Key Development Areas
+
+### Adding New Features
+- Core quiz functionality: Modify **[quiz.js](mdc:quiz.js)**
+- UI changes: Update **[index.html](mdc:index.html)** and **[styles.css](mdc:styles.css)**
+- Configuration: Extend **[config-loader.js](mdc:config-loader.js)**
+
+### Creating New Themes
+1. Create new CSS file in **[themes/](mdc:themes)** directory
+2. Follow existing theme structure from **[ocean-blue.css](mdc:themes/ocean-blue.css)**
+3. Test with **[theme-designer.html](mdc:theme-designer.html)**
+
+### Content Management
+- Topics: JSON files in **[topics/](mdc:topics)** directory
+- Media: Store in **[images/](mdc:images)** or **[audio/](mdc:audio)** directories
+- Use builder tools for content creation
+
+## Testing and Validation
+
+### Local Testing
+- Open **[index.html](mdc:index.html)** directly in browser
+- Test all builder tools independently
+- Verify configuration changes in **[config-loader.js](mdc:config-loader.js)**
+
+### Content Validation
+- Use test files: **[test-media.json](mdc:test-media.json)**, **[test-media-local.json](mdc:test-media-local.json)**
+- Verify JSON structure for topics and quizzes
+
+## Documentation Standards
+
+- **[CONFIG_README.md](mdc:CONFIG_README.md)** - Configuration guide
+- **[THEME_DESIGNER_README.md](mdc:THEME_DESIGNER_README.md)** - Theming guide  
+- **[MEDIA_FEATURES.md](mdc:MEDIA_FEATURES.md)** - Media functionality guide
+
+## Performance Considerations
+
+- Large files: **[quiz.js](mdc:quiz.js)** (42KB), **[styles.css](mdc:styles.css)** (29KB)
+- Optimize media files before adding to **[images/](mdc:images)** or **[audio/](mdc:audio)**
+- Test responsive design on various screen sizes
+

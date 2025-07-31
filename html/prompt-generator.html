@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generátor Promptů - Kvízový Mistr</title>
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/quiz-builder.css">
+</head>
+<body>
+    <div id="app">
+        <div class="screen active">
+            <div class="quiz-builder-container">
+                <h1 class="main-title">Generátor Promptů</h1>
+                <p class="subtitle">Vytvořte prompt pro generování kvízových otázek</p>
+                
+                <!-- Instructions -->
+                <div class="section-card" style="margin-bottom: 1.5rem; background: rgba(102, 126, 234, 0.1); border-color: var(--primary-color);">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="font-size: 2rem;">💡</div>
+                        <div>
+                            <h3 style="margin: 0 0 0.5rem 0; color: var(--primary-color); font-size: 1.1rem;">Jak použít:</h3>
+                            <p style="margin: 0; color: var(--text-primary); line-height: 1.5;">
+                                1. Vyplňte téma a počet otázek → 2. Zkopírujte vygenerovaný prompt → 3. Vložte do LLM (ChatGPT, Claude, atd.) → 4. JSON odpověď zkopírujte do <a href="topic-builder.html" style="color: var(--primary-color);">Stavitele témat</a> nebo uložte jako soubor
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="builder-container">
+                    <!-- Main Input Section -->
+                    <div class="section-card full-width">
+                        <h2 class="section-title">📝 Základní informace</h2>
+                        <div class="quiz-info-grid">
+                            <div class="form-group">
+                                <label class="form-label">Téma kvízu:</label>
+                                <input type="text" id="topic-input" class="form-input" placeholder="Zadejte téma kvízu...">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Počet otázek:</label>
+                                <input type="number" id="question-count-input" class="form-input" min="5" max="100" value="5">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Two Column Layout -->
+                    <div class="two-column-layout">
+                        <!-- Left Column - Generated Prompt -->
+                        <div class="left-column">
+                            <div class="section-card">
+                                <div class="section-header">
+                                    <h2 class="section-title">📋 Vygenerovaný prompt</h2>
+                                    <div class="header-actions">
+                                        <button id="copy-prompt-btn" class="btn-secondary" disabled>📋 Kopírovat</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="preview-container">
+                                    <textarea id="generated-prompt" class="generated-prompt" readonly placeholder="Klikněte na 'Generovat prompt' pro vytvoření promptu..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column - Difficulty Split & Actions -->
+                        <div class="right-column">
+                            <div class="section-card">
+                                <h2 class="section-title">⚖️ Rozložení obtížnosti</h2>
+                                
+                                <div class="topics-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-number" id="total-questions">10</span>
+                                        <span class="stat-label">otázek celkem</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Velmi lehké otázky (20%):</label>
+                                    <input type="number" id="easy-input" class="form-input" min="0" value="2">
+                                    <small class="form-help">90% lidí zná odpověď</small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Střední otázky (60%):</label>
+                                    <input type="number" id="medium-input" class="form-input" min="0" value="6">
+                                    <small class="form-help">60% lidí zná odpověď</small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Velmi těžké otázky (20%):</label>
+                                    <input type="number" id="hard-input" class="form-input" min="0" value="2">
+                                    <small class="form-help">10% lidí zná odpověď</small>
+                                </div>
+
+                                <div class="split-validation" id="split-validation">
+                                    <span class="validation-text">Součet: <span id="sum-display">10</span></span>
+                                </div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="section-card">
+                                <h2 class="section-title">🔧 Akce</h2>
+                                <div class="action-buttons-grid">
+                                    <button id="generate-prompt-btn" class="btn-primary">🔮 Generovat prompt</button>
+                                    <button id="reset-form-btn" class="btn-danger">🗑️ Vymazat vše</button>
+                                    <a href="../index.html" class="btn-back">← Zpět na kvíz</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/prompt-generator.js"></script>
+</body>
+</html> 
